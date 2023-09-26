@@ -63,8 +63,15 @@ void insert_node_after_certain_value(struct LinkedList* list, int index_find, in
 
     }
 
+    // The issue is that the last node in the list in the first iteration has its node pointer properly linked to null 
+    // but all iterations after that will result in infinite loop
     temp->next = new_node;
     new_node->next = next_node;
+
+
+    // SEG FAULT
+    next_node->next = NULL;
+
 
 }
 
@@ -160,11 +167,16 @@ int main()
     insert_node(&list, 8);
 
     print_list(&list);
-
-    /*
+    
     insert_node_after_certain_value(&list, 8, 9);
 
     print_list(&list);
+
+    insert_node_after_certain_value(&list, 9, 12);
+
+    print_list(&list);
+
+    /*
 
     insert_node_after_certain_value(&list, 8, 10);
 
