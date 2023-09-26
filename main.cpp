@@ -35,6 +35,39 @@ void insert_node(struct LinkedList *list, int value)
     temp->next = new_node;
 }
 
+void insert_node_after_certain_value(struct LinkedList* list, int index_find, int value)
+{
+    struct Node *new_node = new Node;
+
+    new_node->value = value;
+    new_node->next = nullptr;
+
+    if(list->head == NULL){
+        list->head = new_node;
+        return;
+    }
+
+    struct Node *temp = list->head;
+    struct Node *next_node = temp->next;
+
+
+    while(temp->value != index_find){
+        if(temp->next == NULL){
+            std::cout << "Value not found in linked list" << std::endl;
+            return;
+        }
+        else{
+            next_node = temp;
+        }
+        temp = temp->next;
+
+    }
+
+    temp->next = new_node;
+    new_node->next = next_node;
+
+}
+
 void print_list(struct LinkedList *list)
 {
     struct Node *temp = list->head;
@@ -128,7 +161,13 @@ int main()
 
     print_list(&list);
 
-    remove_node(&list, 8);
+    insert_node_after_certain_value(&list, 8, 9);
+
+    print_list(&list);
+
+    insert_node_after_certain_value(&list, 8, 10);
+
+    print_list(&list);
 
     return 0;
 }
