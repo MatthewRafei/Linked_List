@@ -161,6 +161,7 @@ int main()
 
     print_list(&list);
 
+    /*
     insert_node_after_certain_value(&list, 8, 9);
 
     print_list(&list);
@@ -168,6 +169,12 @@ int main()
     insert_node_after_certain_value(&list, 8, 10);
 
     print_list(&list);
+
+    insert_node_after_certain_value(&list, 10, 12);
+
+    print_list(&list);
+    */
+
 
     return 0;
 }
